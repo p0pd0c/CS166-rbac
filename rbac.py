@@ -82,7 +82,7 @@ def validate(isthisvalid, mode=""):
 def login(credential_dictionary):
     username, password = get_username_password()
 
-    # MULTIPLE RETURN (authenticated, username, role)
+    # MULTIPLE RETURN authenticated, username, role
     return check_credentials(username, password, credential_dictionary)
 
 
@@ -140,6 +140,7 @@ def warn(text):
     print(bar)
 
 
+# Prompt for username and password
 def get_username_password():
     username = input("Username: ")
     while not validate(username, "text"):
@@ -152,6 +153,7 @@ def get_username_password():
     return username, password
 
 
+# Prompt for login
 def get_login(credential_dictionary):
     # Give the user 3 chances to log in
     # After 3 failed attempts, wait 5 seconds and exit
@@ -186,6 +188,7 @@ def get_signup(credential_dictionary):
     create_credentials("credentials.csv", username, password, role, credential_dictionary)
 
 
+# Prompt user for directory
 def get_directory(username, role):
     print("Hello", role, username)
     choice = menu("directory")
@@ -209,6 +212,8 @@ def get_directory(username, role):
         choice = menu("directory")
 
 
+# Set up credentials
+# Show user various menus
 def main():
     credentials = {}
     warn("intranet")
